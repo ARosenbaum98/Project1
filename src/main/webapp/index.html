@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" media="screen" href="banner.css">
+    <link rel="stylesheet" media="screen" href="main.css">
+    <link rel="stylesheet" media="screen" href="footer.css">
+    <link rel="stylesheet" media="screen" href="dash.css">
+    <link rel="stylesheet" media="screen and (max-width: 740px)" href="mobile-nav.css">
+    <link rel="icon" href="imgs/favcon.png">
     <title>Reimbursement App</title>
 
 </head>
@@ -17,7 +22,7 @@
         <header id="site-banner">
 
             <div id="banner-logo">
-                <img src="imgs/logo6.png" height = "50px" alt="logo">
+                <img src="imgs/favcon.png" height = "50px" alt="logo">
                 <div id="banner-company-name-slogan">
                     <h1 id="banner-company-name">NoBody Enterprise</h1>
                     <h2 id="banner-company-slogan">We don't exist, we won't exist</h2>
@@ -53,16 +58,21 @@
 
         </header>
 
+        
+        <div id="activity-center-banner">
+            <div id="welcome-message-container">
+                <h1 id="welcome-message">Welcome, {$FirstName LastName}</h1>
+            </div>
+        </div>
+
+
         <div id="activity-center-container">
 
-            <div id="activity-center-banner">
-                <div id="welcome-message-container">
-                    <h1 id="welcome-message">Welcome, {$FirstName LastName}</h1>
-                </div>
-            </div>
 
             <div id="activity-card-container">
+
                 <div id="activity-card-list">
+
                     <div class="activity-card" id="activity-card-view-my-profile">
                         <p>View My Profile</p>
                     </div>
@@ -78,7 +88,9 @@
                     <div class="activity-card" id="activity-card-view-reimbursement-requests">
                         <p>View Reimbursement Requests</p>
                     </div>
+
                 </div>
+                
             </div>
             
         </div>

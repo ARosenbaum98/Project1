@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Marck+Script&display=swap');
+
+:root{
+    --off-white: 	rgb(248,248,255);
+    --accent-color: rgb(105,114,216);
+}
+
+*{
+    list-style-type: none;
+    margin:0;
+}
+
+#html{
+    
+    background-color: var(--off-white);
+}
+
+#page-container{
+    position: relative;
+    height: 98vh;
+}
+
+/* Banner Setting*/
+
+    #site-banner, #banner-nav-list{
+        display: flex;
+        height: 50px;
+        justify-content: space-between;
+
+        align-items:center;
+        margin:0;
+
+        background-color: var(--accent-color);
+    }
+
+    #banner-logo{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap:2em;
+        padding-left: 1em;
+        
+        font-size: 0.5em;
+        font-family:sans-serif;
+        white-space: nowrap;
+        overflow-wrap: unset;
+        color: var(--off-white);
+    }
+
+
+    #banner-nav-list{
+        margin: 0;
+    }
+
+    .navbar-button{
+        position: relative;
+        margin: 1.25vw;
+        width: 100px;
+        text-align: center;
+
+    } 
+
+    .navbar-button-text{
+        color: var(--off-white);
+        font-family: sans-serif;
+        font-size: 15px;
+
+        border-bottom-style:hidden;
+
+    }
+
+    .navbar-button-text:hover{
+        cursor: pointer;
+        
+        animation: navbar-button-hover 1.5s ease-out forwards;
+        animation-play-state: running;
+        border-bottom-style: solid;
+    }
+
+/* End of Banner Setting */
+
+
+/* Activity Center Setting */
+
+    #activity-center-banner{
+        padding-top: 7vh;
+        padding-bottom: 10vh;
+        padding-left: 20px;
+        width: 100%;
+    }
+
+    #welcome-message-container{
+        position: absolute;
+        left: 30px;
+        animation-name: welcome-slide;
+        animation-duration: 1.25s;
+    }
+
+    #welcome-message{
+        color: rgb(39, 41, 61);
+        font-family: 'Marck Script', cursive;
+        font-size: 30px;
+    }
+
+    #activity-card-container{
+        display: flex;
+        height: 50vh;
+    }
+
+    @media only screen and (max-width: 820px){
+        #activity-card-container{
+            height: fit-content;
+            min-width: 30em;
+            margin: 50px;
+        }
+    }
+
+    #activity-card-list{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        width: 100%;
+        height: 50%;
+        margin: auto;
+        padding-top: 50px;
+        padding-bottom: 50px;
+
+        background-color: lightgrey;
+        border-color: gray;
+        border-style: solid;
+    }
+
+    @media only screen and (max-width: 820px){
+        
+        #activity-card-list{
+            flex-direction: column;
+            width: 50%;
+            height: 100%;
+            margin: 0 auto;
+            gap: 30px;
+        }
+        
+    }
+
+    .activity-card{
+        display: flex;
+        align-items: center;
+        align-content: center;
+        height: 10em;
+        width: 10em;
+
+        border-style: solid;
+
+    }
+
+    .activity-card>p{
+        
+        width: 100%;
+        text-align: center;
+        font-size: 2vh;
+        color: var(--off-white);
+
+        background-color: green;
+    }
+
+/* End Activty Center Settings */
+
+
+/* Footer */
+
+#page-end-bar{
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    height: 30px;
+    line-height: 30px;
+
+    background-color:  var(--accent-color);
+    color: var(--off-white);
+    text-align: center;
+    font-size: 12px;
+}
+@media only screen and (max-width: 820px){           
+    #page-end-bar{
+        position: relative;
+        width: 100%;
+    }
+}
+
+/* End of Footer */
+
+
+
+/*Animation*/
+
+@keyframes navbar-button-hover {
+    0%{
+        border-bottom-color: rgba(255, 255, 255, 0);
+    }
+    1%{
+        border-bottom-style: solid;
+
+    }
+    100%{
+        border-bottom-color: rgba(255, 255, 255, 1);
+    }
+}
+
+@keyframes welcome-slide {
+
+    0%{
+        opacity: 0;
+        left: 0;
+    }
+
+    75%{
+        opacity: 0.9;
+    }
+
+    100%{
+        opacity: 1;
+    }
+
+}

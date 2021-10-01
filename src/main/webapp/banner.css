@@ -1,0 +1,106 @@
+*{
+    list-style-type: none;
+    margin:0;
+    padding: 0;
+}
+
+
+#site-banner{
+    display: flex;
+    justify-content: space-around;
+    gap: 15%;
+    height: 50px;
+
+    background-color: var(--accent-color);
+    color: var(--off-white);
+
+    /* background-color: aquamarine; */
+}
+
+#banner-logo{
+    display: flex;
+    align-items: center;
+
+    /* background-color: green; */
+}
+
+#banner-logo>img{
+    padding: 10px;
+}
+
+#banner-company-name-slogan{
+    display: column;
+    width: 200px;
+
+    /* background-color: violet; */
+}
+
+#banner-company-name{
+    font-size: 20px;
+}
+
+
+#banner-company-slogan{
+    font-size: 15px;    
+}
+
+
+#banner-nav-button-container{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    text-overflow: unset;
+
+    /* background-color: blue; */
+}
+
+#banner-nav-list{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+
+    /* background-color: red; */
+}
+
+.navbar-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 25px;
+
+    /* background-color: darkgoldenrod; */
+}
+
+.navbar-button-text{
+    color: var(--off-white);
+    font-family: sans-serif;
+    font-size: 15px;
+
+    border-bottom-style:hidden;
+
+}
+
+.navbar-button-text:hover{
+    cursor: pointer;
+    
+    animation: navbar-button-hover 1.5s ease-out forwards;
+    animation-play-state: running;
+    border-bottom-style: solid;
+}
+
+
+/*Animation*/
+
+@keyframes navbar-button-hover {
+    0%{
+        border-bottom-color: rgba(255, 255, 255, 0);
+    }
+    1%{
+        border-bottom-style: solid;
+
+    }
+    100%{
+        border-bottom-color: rgba(255, 255, 255, 1);
+    }
+}

@@ -1,0 +1,10 @@
+#page-end-bar{
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 50px;
+
+    background-color: var(--accent-color);
+    color: var(--off-white);
+}

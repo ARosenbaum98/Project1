@@ -1,0 +1,19 @@
+:root{
+    --off-white: 	rgb(248,248,255);
+    --accent-color: rgb(105,114,216);
+}
+
+
+
+/* Banner Setting*/
+
+#banner-company-name-slogan{
+    display: none;
+}
+
+#banner-nav-button-container{
+    display: none;
+}
+
+
+/* End of Banner Setting */
