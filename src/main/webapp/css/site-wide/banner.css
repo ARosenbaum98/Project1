@@ -17,6 +17,12 @@
     /* background-color: aquamarine; */
 }
 
+
+#mobile-nav-toggle{
+    display: none;
+}
+
+
 #banner-logo{
     display: flex;
     align-items: center;

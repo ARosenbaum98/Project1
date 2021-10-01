@@ -5,6 +5,11 @@
     padding: 0px 15vw;
 }
 
+#mobile-nav-toggle{
+    display: none;
+}
+
+
 #activity-card-list{
     display: flex;
     flex-direction: column;
