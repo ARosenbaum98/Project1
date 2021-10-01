@@ -1,14 +1,13 @@
 #welcome-message{
-    margin: 20px 0px;
+    margin-top: 20px;
+    margin-left: 10px;
 }
 
 #activity-center-container{
     display: flex;
     align-items: center;
     min-height: 60%;
-    margin: 5%;
-
-    background-color: red;
+    margin: 5% 0;
 }
 
 #activity-card-container{
@@ -19,8 +18,8 @@
     height: 75%;
     padding: 5% 0;
 
+    background-color: var(--off-gray);
 
-    background-color: blue;
 }
 
 #activity-card-list{
@@ -33,7 +32,7 @@
     height: 40vh;
     
 
-    background-color: green;
+    background-color: var(--accent-complement);
 }
 
 .activity-card{
@@ -46,12 +45,11 @@
     margin: 0 auto;
 
 
-    background-color: pink;
+    background-color: var(--deeper-color);
+    color:var(--off-white)
 }
 
 .activity-card>p{
     width: 100%;
-
-    background-color: aquamarine;
     font-size: 2vh;
 }
