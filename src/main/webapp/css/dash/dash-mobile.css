@@ -1,0 +1,31 @@
+#activity-card-container{
+    display: block;
+    width: 100%;
+    height: fit-content;
+    padding: 0px 15vw;
+}
+
+#activity-card-list{
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    align-items: center;
+    gap: 25px;
+    padding: 25px 0;
+
+    height: fit-content;
+    padding: 50px auto;
+}
+
+.activity-card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 30vw;
+    height: 30vw;
+}
+
+.activity-card>p{
+    font-size: 4vw;
+}
