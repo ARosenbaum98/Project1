@@ -8,6 +8,7 @@
     align-items: center;
     min-height: 60%;
     margin: 5% 0;
+
 }
 
 #activity-card-container{
@@ -18,7 +19,7 @@
     height: 75%;
     padding: 5% 0;
 
-    background-color: var(--off-gray);
+    background-color: darkslategray;
 
 }
 
@@ -32,7 +33,7 @@
     height: 40vh;
     
 
-    background-color: var(--accent-complement);
+    background-color: lightsteelblue;
 }
 
 .activity-card{

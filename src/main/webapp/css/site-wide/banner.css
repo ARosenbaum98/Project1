@@ -1,17 +1,10 @@
-*{
-    list-style-type: none;
-    margin:0;
-    padding: 0;
-}
-
-
 #site-banner{
     display: flex;
     justify-content: space-around;
     gap: 15%;
     height: 50px;
 
-    background-color: var(--accent-color);
+    background-color: var(--off-gray);
     color: var(--off-white);
 
     /* background-color: aquamarine; */
