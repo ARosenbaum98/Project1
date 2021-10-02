@@ -1,6 +1,15 @@
+#welcome-message-container{
+    padding-left: 15px;
+    animation-name: welcome-slide;
+    animation-duration: 1.25s;
+}
+
 #welcome-message{
     margin-top: 20px;
     margin-left: 10px;
+
+    font-family: var(--font-script);
+    font-weight: 100;
 }
 
 #activity-center-container{
@@ -53,4 +62,20 @@
 .activity-card>p{
     width: 100%;
     font-size: 2vh;
+}
+
+@keyframes welcome-slide {
+
+    0%{
+        opacity: 0;
+        padding-left: 0;
+    }
+
+    75%{
+        opacity: 0.9;
+    }
+
+    100%{
+        opacity: 1;
+    }
 }

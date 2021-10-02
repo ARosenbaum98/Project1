@@ -8,5 +8,8 @@
     background-color: var(--off-white);
     color: var(--off-black);
 
+    border-top-style: solid;
+    border-top-color: var(--darker);
+
     font-size: 13px;
 }

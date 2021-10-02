@@ -1,8 +1,14 @@
+#welcome-message{
+    font-size: 6vw;
+}
+
 #activity-card-container{
     display: block;
     width: 100%;
     height: fit-content;
     padding: 0px 15vw;
+    margin: 0 15vw;
+    
 }
 
 #mobile-nav-toggle{
@@ -15,11 +21,10 @@
     flex-direction: column;
     align-content: space-around;
     align-items: center;
-    gap: 25px;
-    padding: 25px 0;
 
+    gap: 8vw;
+    padding: 8vw 0;
     height: fit-content;
-    padding: 50px auto;
 }
 
 .activity-card{
@@ -27,10 +32,10 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    width: 30vw;
-    height: 30vw;
+    width: 20vw;
+    height: 20vw;
 }
 
 .activity-card>p{
-    font-size: 4vw;
+    font-size: 2.5vw;
 }

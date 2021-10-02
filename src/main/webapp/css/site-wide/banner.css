@@ -7,6 +7,9 @@
     background-color: var(--off-white);
     color: var(--off-black);
 
+    border-bottom-style: solid;
+    border-bottom-color: var(--darker)
+
     /* background-color: aquamarine; */
 }
 
@@ -22,19 +25,25 @@
 }
 
 #banner-company-name-slogan{
-    display: column;
     width: 200px;
 
     /* background-color: violet; */
 }
 
 #banner-company-name{
+    font-family: var(--font-logo);
     font-size: 20px;
+    height: 25px;
+
 }
 
 
 #banner-company-slogan{
-    font-size: 15px;    
+    font-family: var(--font-slogan);
+    font-size: 15px;   
+    
+    padding-bottom: 5px;
+
 }
 
 

@@ -15,16 +15,6 @@
     padding: 0 10px;
 }
 
-#mobile-nav-toggle{
-    background-color: red;
-    width: 45px;
-    height: 45px;
-    z-index: 1;  
-    
-    -webkit-user-select: none;
-    user-select: none;
-
-}
 
 
 /* End of Banner Setting */

@@ -1,7 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri&family=Kaushan+Script&family=Oswald:wght@200&family=Ubuntu:wght@300&display=swap');
 :root{
     --off-white: 	     rgb(255, 254, 248);
     --off-gray:          rgb(117, 115, 105);
-    --off-lightgray:     rgb(229, 233, 187);
+    --off-lightgray:     rgb(237, 240, 209);
     --off-black:         rgb(11, 13, 14);
     --darker:            darkslategray;
     --lighter:           lightsteelblue;
@@ -9,14 +10,20 @@
     --bg-stripe-size:    5px;
     --bg-stripe-padding: 15px;
 
+    --font-script:       'Kaushan Script', cursive;
+    --font-logo:         'Hind Siliguri', sans-serif;
+    --font-slogan:       'Oswald', sans-serif;
+    --font-main:         'Ubuntu', sans-serif;
+
 }
+
 *{
     list-style-type: none;
     margin:0;
     padding: 0;
 
     color: var(--off-black);
-    font-family: sans-serif;
+    font-family: var(--font-main);
 }
 
 
