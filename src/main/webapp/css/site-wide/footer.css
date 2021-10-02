@@ -5,8 +5,8 @@
     justify-content: space-around;
     height: 30px;
 
-    background-color: var(--off-gray);
-    color: var(--off-white);
+    background-color: var(--off-white);
+    color: var(--off-black);
 
-    font-size: 11.5px;
+    font-size: 13px;
 }

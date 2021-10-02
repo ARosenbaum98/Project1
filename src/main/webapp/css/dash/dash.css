@@ -19,7 +19,7 @@
     height: 75%;
     padding: 5% 0;
 
-    background-color: darkslategray;
+    background-color: var(--darker);
 
 }
 
@@ -33,7 +33,7 @@
     height: 40vh;
     
 
-    background-color: lightsteelblue;
+    background-color: var(--lighter);
 }
 
 .activity-card{
@@ -46,8 +46,8 @@
     margin: 0 auto;
 
 
-    background-color: var(--deeper-color);
-    color:var(--off-white)
+    background-color: var(--off-white);
+    color:var(--off-black)
 }
 
 .activity-card>p{

@@ -4,8 +4,8 @@
     gap: 15%;
     height: 50px;
 
-    background-color: var(--off-gray);
-    color: var(--off-white);
+    background-color: var(--off-white);
+    color: var(--off-black);
 
     /* background-color: aquamarine; */
 }
@@ -66,7 +66,7 @@
 }
 
 .navbar-button-text{
-    color: var(--off-white);
+    color: var(--off-black);
     font-family: sans-serif;
     font-size: 15px;
 
@@ -87,13 +87,13 @@
 
 @keyframes navbar-button-hover {
     0%{
-        border-bottom-color: rgba(255, 255, 255, 0);
+        border-bottom-color: rgba(0, 0, 0, 0);
     }
     1%{
         border-bottom-style: solid;
 
     }
     100%{
-        border-bottom-color: rgba(255, 255, 255, 1);
+        border-bottom-color: rgba(0, 0, 0, 1);
     }
 }

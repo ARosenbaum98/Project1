@@ -1,11 +1,22 @@
 :root{
-    --off-white: 	     rgb(248,248,255);
+    --off-white: 	     rgb(255, 254, 248);
+    --off-gray:          rgb(117, 115, 105);
+    --off-lightgray:     rgb(229, 233, 187);
+    --off-black:         rgb(11, 13, 14);
+    --darker:            darkslategray;
+    --lighter:           lightsteelblue;
+
+    --bg-stripe-size:    5px;
+    --bg-stripe-padding: 15px;
 
 }
 *{
     list-style-type: none;
     margin:0;
     padding: 0;
+
+    color: var(--off-black);
+    font-family: sans-serif;
 }
 
 
@@ -15,6 +26,14 @@
     flex-direction: column;
     justify-content: space-between;
 
-    background-color: var(--off-white);
+    background: 
+        repeating-linear-gradient(
+            45deg, 
+            var(--off-lightgray), 
+            var(--off-lightgray) var(--bg-stripe-size), 
+            var(--off-white) var(--bg-stripe-size), 
+            var(--off-white) var(--bg-stripe-padding)
+        );
+
 }
 
