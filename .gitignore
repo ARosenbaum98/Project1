@@ -24,6 +24,7 @@ hs_err_pid*
 
 # DB safty files to ignore
 *.properties
+db.properties
 
 # Intelij files to ignore
 **/target

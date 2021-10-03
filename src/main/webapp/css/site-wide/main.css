@@ -26,6 +26,10 @@
     font-family: var(--font-main);
 }
 
+a{
+    text-decoration: none;
+}
+
 
 #page-container{
     display: flex;
