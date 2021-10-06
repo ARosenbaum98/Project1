@@ -1,67 +1,61 @@
 package com.reimbursement.webmodels;
 
-import java.time.LocalDateTime;
-import java.util.Objects;
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.time.Instant;
 
+@Entity
+@Table(name ="p1_reimbursement_requests")
 public class ReimbursementRequest {
-    private int id;
-    private int userId;
-    private boolean isPending;
-    private boolean isApproved;
-    private double amount;
+    @Id
+    @Column(name = "request_id", nullable = false)
+    private Long id;
+
+    @Column(name = "is_pending", nullable = false)
+    private Boolean isPending = false;
+
+    @Column(name = "is_approved")
+    private Boolean isApproved;
+
+    @Column(name = "amount", nullable = false, precision = 8, scale = 2)
+    private BigDecimal amount;
+
+    @Column(name = "description", nullable = false, length = 180)
     private String description;
-    private LocalDateTime dateOfPurchase;
-    private LocalDateTime dateOfSubmission;
-    private LocalDateTime dateOfApproval;
-    private int approvingManagerId;
 
-    public ReimbursementRequest(int id, int userId, boolean isPending, boolean isApproved, double amount, String description, LocalDateTime dateOfPurchase, LocalDateTime dateOfSubmission, LocalDateTime dateOfApproval, int approvingManagerId) {
-        this.id = id;
-        this.setUserId(userId);
-        this.setPending(isPending);
-        this.setApproved(isApproved);
-        this.setAmount(amount);
-        this.setDescription(description);
-        this.setDateOfPurchase(dateOfPurchase);
-        this.setDateOfSubmission(dateOfSubmission);
-        this.setDateOfApproval(dateOfApproval);
-        this.setApprovingManagerId(approvingManagerId);
+    @Column(name = "date_of_purchase", nullable = false)
+    private Instant dateOfPurchase;
+
+    @Column(name = "date_of_submission", nullable = false)
+    private Instant dateOfSubmission;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    public User getUser() {
+        return user;
     }
 
-    public int getId() {
-        return id;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public int getUserId() {
-        return userId;
+
+    public Instant getDateOfSubmission() {
+        return dateOfSubmission;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setDateOfSubmission(Instant dateOfSubmission) {
+        this.dateOfSubmission = dateOfSubmission;
     }
 
-    public boolean isPending() {
-        return isPending;
+    public Instant getDateOfPurchase() {
+        return dateOfPurchase;
     }
 
-    public void setPending(boolean pending) {
-        this.isPending = pending;
-    }
-
-    public boolean isApproved() {
-        return isApproved;
-    }
-
-    public void setApproved(boolean approved) {
-        this.isApproved = approved;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
+    public void setDateOfPurchase(Instant dateOfPurchase) {
+        this.dateOfPurchase = dateOfPurchase;
     }
 
     public String getDescription() {
@@ -72,69 +66,50 @@ public class ReimbursementRequest {
         this.description = description;
     }
 
-    public LocalDateTime getDateOfPurchase() {
-        return dateOfPurchase;
+    public BigDecimal getAmount() {
+        return amount;
     }
 
-    public void setDateOfPurchase(LocalDateTime dateOfPurchase) {
-        this.dateOfPurchase = dateOfPurchase;
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
     }
 
-    public LocalDateTime getDateOfSubmission() {
-        return dateOfSubmission;
+    public Boolean getIsApproved() {
+        return isApproved;
     }
 
-    public void setDateOfSubmission(LocalDateTime dateOfSubmission) {
-        this.dateOfSubmission = dateOfSubmission;
+    public void setIsApproved(Boolean isApproved) {
+        this.isApproved = isApproved;
     }
 
-    public LocalDateTime getDateOfApproval() {
-        return dateOfApproval;
+    public Boolean getIsPending() {
+        return isPending;
     }
 
-    public void setDateOfApproval(LocalDateTime dateOfApproval) {
-        this.dateOfApproval = dateOfApproval;
+    public void setIsPending(Boolean isPending) {
+        this.isPending = isPending;
     }
 
-    public int getApprovingManagerId() {
-        return approvingManagerId;
+
+    public Long getId() {
+        return id;
     }
 
-    public void setApprovingManagerId(int approvingManagerId) {
-        this.approvingManagerId = approvingManagerId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     @Override
     public String toString() {
         return "ReimbursementRequest{" +
-                "id=" + this.getId() +
-                ", userId=" + this.getUserId() +
-                ", isPending=" + this.isPending() +
-                ", isApproved=" + this.isApproved() +
-                ", amount=" + this.getAmount() +
-                ", description='" + this.getDescription() + '\'' +
-                ", dateOfPurchase=" + this.getDateOfPurchase() +
-                ", dateOfSubmission=" + this.getDateOfSubmission() +
-                ", dateOfApproval=" + this.getDateOfApproval() +
-                ", approvingManagerId=" + this.getApprovingManagerId() +
+                "id=" + id +
+                ", isPending=" + isPending +
+                ", isApproved=" + isApproved +
+                ", amount=" + amount +
+                ", description='" + description + '\'' +
+                ", dateOfPurchase=" + dateOfPurchase +
+                ", dateOfSubmission=" + dateOfSubmission +
+                ", user= " + user.getFname() + " " + user.getLname() + ": "+getUser()+
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ReimbursementRequest that = (ReimbursementRequest) o;
-        return getId() == that.getId();
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId());
-    }
-
-    @Override
-    public ReimbursementRequest clone(){
-        return new ReimbursementRequest(this.getId(), this.getUserId(), this.isPending(), this.isApproved(), this.getAmount(), this.getDescription(), this.getDateOfPurchase(), this.getDateOfSubmission(), this.getDateOfApproval(), this.getApprovingManagerId());
     }
 }
