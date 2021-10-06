@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class TestModels {
 
@@ -67,16 +68,19 @@ public class TestModels {
         assertNotNull(users);
     }
 
-    @Test
+    @Ignore
     public void testInsertDeleteUser(){
 
         connectUser = new SQLConnect<>(User.class, true, Connection.TRANSACTION_READ_UNCOMMITTED);
 
+        String randomUsername = String.valueOf(new Random().nextInt(10000));
+        String randomEmail = String.valueOf(new Random().nextInt(10000));
+
         User user = new User(
                 -1,
                 false,
-                "5414243@gmail.com",
-                "4544Sebastian22",
+                randomEmail,
+                randomUsername,
                 "password!",
                 LocalDateTime.now(),
                 "Mr.",
@@ -92,13 +96,18 @@ public class TestModels {
                 "AL",
                 32305
         );
+
+        // Test Insert
         connectUser.insert(user);
 
+        // Test query
         User pull = connectUser.getByNaturalKey("username",user.getUsername());
         assertNotNull(pull);
 
+        // Test Update
         User old = pull.clone();
-        pull.setFname("test123");
+        pull.setFname("123test123");
+        connectUser.update(pull);
 
         // Test Delete
         connectUser.delete(pull);

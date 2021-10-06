@@ -144,7 +144,7 @@ public class SQLConnect<Bean>{
 
         this.beginTransaction();
 
-        Query q = this.createQueryFromParams(cols, values, this.session);
+        Query q = this.createQueryFromParams(cols, values);
 
         Bean bean = (Bean) q.uniqueResult();
 
@@ -163,14 +163,11 @@ public class SQLConnect<Bean>{
         if(cols.length!=values.length)
             throw new RuntimeException("number of columns ("+cols.length+") does not match number of values ("+values.length+")");
 
-        Session s = this.sessionFactory.openSession();
-        Transaction ts = s.beginTransaction();
+        this.beginTransaction();
 
-        Query q = createQueryFromParams(cols, values, s);
+        Query q = createQueryFromParams(cols, values);
 
         List<Bean> b = q.getResultList();
-
-        s.close();
 
         return b;
     }
@@ -183,7 +180,6 @@ public class SQLConnect<Bean>{
     public List<Bean> get(String col, Object value){
         return get(new String[]{col}, new Object[]{value});
     }
-
 
     /**
      * @param obj POJO To be inserted
@@ -329,7 +325,7 @@ public class SQLConnect<Bean>{
         return null;
     }
 
-    private Query createQueryFromParams(String[] cols, Object[] values, Session s){
+    private Query createQueryFromParams(String[] cols, Object[] values){
         String query = "FROM "+beanClass.getName();
 
         int i = 0;
@@ -340,7 +336,7 @@ public class SQLConnect<Bean>{
             i++;
         }
 
-        Query q = s.createQuery(query);
+        Query q = session.createQuery(query);
 
         i = 0;
         for(Object value : values){
