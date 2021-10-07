@@ -8,8 +8,6 @@
 
             if(user!=null){
                 out.print(user.getFname()+" "+user.getLname());
-            }else{
-
             }
 
         %></h1>

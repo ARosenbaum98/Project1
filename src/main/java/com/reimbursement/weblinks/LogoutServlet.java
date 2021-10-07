@@ -11,16 +11,22 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
 @WebServlet(
-        name = "LoginOut",
+        name = "Logout",
         value = "/logout"
 )
 public class LogoutServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Cookie ck=new Cookie("login_user",null);
-        ck.setMaxAge(0);
-        response.addCookie(ck);
+        Cookie ckusername=new Cookie(LoginCookie.USER_COOKIE, "");
+        Cookie ckpassword=new Cookie(LoginCookie.PASSWORD_COOKIE, "");
+
+        ckusername.setMaxAge(0);
+        ckpassword.setMaxAge(0);
+
+        response.addCookie(ckusername);
+        response.addCookie(ckpassword);
+
         response.sendRedirect("");
     }
 }

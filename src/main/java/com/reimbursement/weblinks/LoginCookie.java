@@ -9,26 +9,46 @@ import java.util.Objects;
 
 public class LoginCookie {
 
+    public static final String USER_COOKIE = "reimbursementsApp_username";
+    public static final String PASSWORD_COOKIE = "reimbursementsApp_password";
+
     public static User getLoginUser(HttpServletRequest request) {
         Cookie[] cookies = null;
 
         SQLConnect<User> connect = new SQLConnect(User.class);
 
-        User user;
-
-        // Get an array of Cookies associated with the this domain
+        // Get an array of Cookies associated with this domain
         cookies = request.getCookies();
+        String username = "";
+        String password = "";
 
         for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("login_user")) {
+
+            // Get the Username cookie
+            if (cookie.getName().equals(USER_COOKIE)) {
+
+                // User is logged out
                 if (Objects.equals(cookie.getValue(), "")) {
                     return null;
-                } else {
-                    user = connect.getByPrimaryKey(Integer.parseInt(cookie.getValue()));
-                    return user;
                 }
+
+                username = cookie.getValue();
+            }
+
+            if(cookie.getName().equals(PASSWORD_COOKIE)){
+                // User is logged out
+                if (Objects.equals(cookie.getValue(), "")) {
+                    return null;
+                }
+
+                password = cookie.getValue();
             }
         }
-        return null;
+
+        String[] cols = {"username","pass"};
+        Object[] vals = {username, password};
+        User user = connect.getUnique(cols, vals);
+
+        return user;
     }
 }

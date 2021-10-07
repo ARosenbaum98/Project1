@@ -39,13 +39,13 @@ public class LoginServlet extends HttpServlet {
 
         User user = connect.getUnique(cols, vals);
 
-        ObjectMapper objectMapper = new ObjectMapper();
-
         if(user!= null){
-            Cookie ck=new Cookie("login_user", String.valueOf(user.getId()));
-            response.addCookie(ck);
+            Cookie ckusername=new Cookie(LoginCookie.USER_COOKIE, String.valueOf(user.getUsername()));
+            Cookie ckpassword=new Cookie(LoginCookie.PASSWORD_COOKIE, String.valueOf(user.getPassword()));
+            response.addCookie(ckusername);
+            response.addCookie(ckpassword);
 
-            response.sendRedirect("Project1_war_exploded");
+            response.sendRedirect("");
         }else{
             response.sendRedirect("sign-in/index.jsp");
         }
