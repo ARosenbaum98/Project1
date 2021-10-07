@@ -1,5 +1,5 @@
 <html>
-<jsp:include page="/static-html/head.html"/>
+<jsp:include page="/static-html/head.jsp"/>
 
 <!-- Page Specific CSS -->
 <!-- Dashboard CSS -->
@@ -10,7 +10,7 @@
 
 <div id="page-container">
 
-    <jsp:include page="/static-html/header.html"/>
+    <jsp:include page="/static-html/header.jsp"/>
 
     <form action="../login" method="post">
         Name:<input type="text" name="name"><br>
@@ -18,7 +18,7 @@
         <input type="submit" value="login">
     </form>
 
-    <jsp:include page="/static-html/footer.html"/>
+    <jsp:include page="/static-html/footer.jsp"/>
 
 </div>
 </body>

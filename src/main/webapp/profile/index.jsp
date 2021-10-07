@@ -1,5 +1,5 @@
 <html>
-<jsp:include page="/static-html/head.html"/>
+<jsp:include page="/static-html/head.jsp"/>
 
 <!-- Page Specific CSS -->
 <!-- Dashboard CSS -->
@@ -10,8 +10,8 @@
 
 <div id="page-container">
 
-    <jsp:include page="/static-html/header.html"/>
-    <jsp:include page="/static-html/footer.html"/>
+    <jsp:include page="/static-html/header.jsp"/>
+    <jsp:include page="/static-html/footer.jsp"/>
 
 </div>
 </body>

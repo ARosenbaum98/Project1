@@ -1,6 +1,18 @@
+<%@ page import="com.reimbursement.weblinks.LoginCookie" %>
+<%@ page import="com.reimbursement.webmodels.User" %>
 <div id="activity-center-banner">
     <div id="welcome-message-container">
-        <h1 id="welcome-message">Welcome, Asher Rosenbaum</h1>
+        <h1 id="welcome-message">Welcome, <%
+
+            User user = LoginCookie.getLoginUser(request);
+
+            if(user!=null){
+                out.print(user.getFname()+" "+user.getLname());
+            }else{
+
+            }
+
+        %></h1>
     </div>
 </div>
 

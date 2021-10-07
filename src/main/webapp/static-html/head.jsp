@@ -1,7 +1,11 @@
+<%@ page import="java.util.Objects" %>
+<%@ page import="com.reimbursement.webmodels.User" %>
+<%@ page import="com.reimbursement.connection.SQLConnect" %>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
     <link rel="icon" href="/Project1_war_exploded/imgs/favcon.png">
 

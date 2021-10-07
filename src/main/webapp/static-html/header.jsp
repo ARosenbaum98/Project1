@@ -26,7 +26,7 @@
             </li>
             <li class="navbar">
                 <div class="navbar-button">
-                    <a class="navbar-button-text">
+                    <a class="navbar-button-text" href="/Project1_war_exploded/logout">
                         Logout
                     </a>
                 </div>
