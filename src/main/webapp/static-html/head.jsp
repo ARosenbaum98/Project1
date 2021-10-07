@@ -10,21 +10,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <link rel="icon" href="<%out.println(WebLink.URL_SITE_IMGS);%>favcon.png">
+    <link rel="icon" href="<%out.print(WebLink.URL_SITE_IMGS);%>favcon.png">
 
     <!-- Banner CSS -->
     <link rel="stylesheet" media="screen"
-          href="<%out.println(WebLink.URL_CSS);%>site-wide/banner.css">
+          href="<%out.print(WebLink.URL_CSS);%>site-wide/banner.css">
     <link rel="stylesheet" media="screen and (max-width: 680px)"
-          href="<%out.println(WebLink.URL_CSS);%>site-wide/banner-mobile.css">
+          href="<%out.print(WebLink.URL_CSS);%>site-wide/banner-mobile.css">
 
     <!-- Main Content CSS -->
     <link rel="stylesheet" media="screen"
-          href="<%out.println(WebLink.URL_CSS);%>site-wide/main.css">
+          href="<%out.print(WebLink.URL_CSS);%>site-wide/main.css">
     
     <!-- Footer CSS -->
     <link rel="stylesheet"
-          media="screen" href="<%out.println(WebLink.URL_CSS);%>site-wide/footer.css">
+          media="screen" href="<%out.print(WebLink.URL_CSS);%>site-wide/footer.css">
 
     <title>Reimbursement App</title>
 
