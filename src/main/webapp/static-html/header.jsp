@@ -1,6 +1,7 @@
+<%@ page import="com.reimbursement.weblinks.WebLink" %>
 <header id="site-banner">
     <div id="banner-logo">
-        <img src="/Project1_war_exploded/imgs/favcon.png" height = "50px" alt="logo">
+        <img src="<%out.print(WebLink.URL_SITE_IMGS);%>favcon.png" height = "50px" alt="logo">
         <div id="banner-company-name-slogan">
             <h1 id="banner-company-name">NoBody Enterprise</h1>
             <h2 id="banner-company-slogan">We don't exist, we won't exist</h2>
@@ -12,21 +13,21 @@
         <ul id="banner-nav-list">
             <li class="navbar">
                 <div class="navbar-button">
-                    <a class="navbar-button-text" href="/Project1_war_exploded/profile">
+                    <a class="navbar-button-text" href="<%out.print(WebLink.URL_PROFILE);%>">
                         My Profile
                     </a>
                 </div>
             </li>
             <li class="navbar">
                 <div class="navbar-button">
-                    <a class="navbar-button-text" href="/Project1_war_exploded/">
+                    <a class="navbar-button-text" href="<%out.print(WebLink.URL_HOME);%>">
                         Dashboard
                     </a>
                 </div>
             </li>
             <li class="navbar">
                 <div class="navbar-button">
-                    <a class="navbar-button-text" href="/Project1_war_exploded/logout">
+                    <a class="navbar-button-text" href="<%out.print(WebLink.URL_LOGOUT);%>">
                         Logout
                     </a>
                 </div>

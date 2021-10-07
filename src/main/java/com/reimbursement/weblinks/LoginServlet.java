@@ -45,9 +45,10 @@ public class LoginServlet extends HttpServlet {
             response.addCookie(ckusername);
             response.addCookie(ckpassword);
 
-            response.sendRedirect("");
+            response.sendRedirect(WebLink.URL_HOME);
+            return;
         }else{
-            response.sendRedirect("sign-in/index.jsp");
+            response.sendRedirect(WebLink.URL_SIGN_IN);
         }
 
         out.close();

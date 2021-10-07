@@ -6,8 +6,8 @@
 <jsp:include page="/static-html/head.jsp"/>
 <!-- Page Specific CSS -->
 <!-- Dashboard CSS -->
-<link rel="stylesheet" media="screen" href="/Project1_war_exploded/css/dash/dash.css">
-<link rel="stylesheet" media="screen and (max-width: 680px)" href="/Project1_war_exploded/css/dash/dash-mobile.css">
+<link rel="stylesheet" media="screen" href="<%out.print(WebLink.URL_CSS);%>dash/dash.css">
+<link rel="stylesheet" media="screen and (max-width: 680px)" href="<%out.print(WebLink.URL_CSS);%>dash/dash-mobile.css">
 
 
 <% WebLink.signinRedirect(request, response); %>

@@ -27,6 +27,7 @@ public class LogoutServlet extends HttpServlet {
         response.addCookie(ckusername);
         response.addCookie(ckpassword);
 
-        response.sendRedirect("");
+        response.sendRedirect(WebLink.URL_HOME);
+        return;
     }
 }
