@@ -9,6 +9,8 @@
 <link rel="stylesheet" media="screen and (max-width: 680px)"
       href="<%out.print(WebLink.URL_CSS);%>profile/profile-mobile.css">
 
+<% WebLink.signinRedirect(request, response); %>
+
 <body>
 
 <div id="page-container">

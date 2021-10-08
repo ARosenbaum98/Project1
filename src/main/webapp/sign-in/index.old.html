@@ -78,17 +78,27 @@
         <link rel="stylesheet" media="screen"
               href="http://127.0.0.1:5500/css/login/login.css">
     
-    
-        <div id = "form-container">
-            <h1 id ="welcome-login-message">Welcome! Please log in</h1>
-            <form class = "login-form" action="../login" method="post">
-                Username:<br>
-                <input type="text" name="name"><br>
-                Password:<br>
-                <input type="password" name="password"><br><br>
-                <input type="submit" value="login">
+
+        <div class="login">
+        <h2 class="sign-in-header"> sign in </h2>
+            <form action="../login" method="post">
+                <input type="text" class="text" name="username">
+                <span>username</span>
+
+                <br>
+                <br>
+
+                <input type="password" class="text" name="password">
+                <span>password</span>
+                <br>
+                
+                <button class="signin">
+                Sign In
+                </button>
             </form>
+
         </div>
+    
     
         <footer id="page-end-bar">
     

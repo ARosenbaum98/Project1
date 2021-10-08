@@ -11,17 +11,31 @@
 
     <jsp:include page="/static-html/header.jsp"/>
 
-    <!-- Page Specific CSS -->
-    <!-- Login CSS -->
-    <link rel="stylesheet" media="screen"
-          href="<%out.print(WebLink.URL_CSS);%>login/login.css">
+        <!-- Page Specific CSS -->
+        <!-- Login CSS -->
+        <link rel="stylesheet" media="screen"
+              href="<%out.print(WebLink.URL_CSS);%>login/login.css">
+    
 
+        <div class="login">
+        <h2 class="sign-in-header"> sign in </h2>
+            <form action="../login" method="post">
+                <input type="text" class="text" name="username">
+                <span>username</span>
 
-    <form action="../login" method="post">
-        Name:<input type="text" name="name"><br>
-        Password:<input type="password" name="password"><br>
-        <input type="submit" value="login">
-    </form>
+                <br>
+                <br>
+
+                <input type="password" class="text" name="password">
+                <span>password</span>
+                <br>
+                
+                <button class="signin">
+                Sign In
+                </button>
+            </form>
+
+        </div>
 
     <jsp:include page="/static-html/footer.jsp"/>
 
