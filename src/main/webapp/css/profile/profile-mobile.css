@@ -1,0 +1,7 @@
+.profile-content{
+    flex-direction: column;
+}
+
+#profile-flexbox{
+    margin: 0 15%;
+}
