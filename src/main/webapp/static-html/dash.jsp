@@ -4,11 +4,7 @@
     <div id="welcome-message-container">
         <h1 id="welcome-message">Welcome, <%
 
-            User user = LoginCookie.getLoginUser(request);
-
-            if(user!=null){
-                out.print(user.getFname()+" "+user.getLname());
-            }
+            out.print(LoginCookie.getFnameFromCookie(request)+" "+ LoginCookie.getLnameFromCookie(request));
 
         %></h1>
     </div>

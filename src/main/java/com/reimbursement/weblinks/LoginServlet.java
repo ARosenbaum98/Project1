@@ -25,12 +25,13 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         response.setContentType("text/html");
         PrintWriter out=response.getWriter();
 
         request.getRequestDispatcher("/sign-in").include(request, response);
 
-        String name=request.getParameter("name");
+        String name=request.getParameter("username");
         String password=request.getParameter("password");
 
         SQLConnect<User> connect = new SQLConnect<>(User.class);
@@ -42,8 +43,13 @@ public class LoginServlet extends HttpServlet {
         if(user!= null){
             Cookie ckusername=new Cookie(LoginCookie.USER_COOKIE, String.valueOf(user.getUsername()));
             Cookie ckpassword=new Cookie(LoginCookie.PASSWORD_COOKIE, String.valueOf(user.getPassword()));
+            Cookie ckfname=new Cookie(LoginCookie.FNAME_COOKIE, String.valueOf(user.getFname()));
+            Cookie cklname=new Cookie(LoginCookie.LNAME_COOKIE, String.valueOf(user.getLname()));
+
             response.addCookie(ckusername);
             response.addCookie(ckpassword);
+            response.addCookie(ckfname);
+            response.addCookie(cklname);
 
             response.sendRedirect(WebLink.URL_HOME);
             return;

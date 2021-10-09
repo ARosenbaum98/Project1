@@ -20,12 +20,18 @@ public class LogoutServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Cookie ckusername=new Cookie(LoginCookie.USER_COOKIE, "");
         Cookie ckpassword=new Cookie(LoginCookie.PASSWORD_COOKIE, "");
+        Cookie ckfname=new Cookie(LoginCookie.FNAME_COOKIE, "");
+        Cookie cklname=new Cookie(LoginCookie.LNAME_COOKIE, "");
 
         ckusername.setMaxAge(0);
         ckpassword.setMaxAge(0);
+        ckfname.setMaxAge(0);
+        cklname.setMaxAge(0);
 
         response.addCookie(ckusername);
         response.addCookie(ckpassword);
+        response.addCookie(ckfname);
+        response.addCookie(cklname);
 
         response.sendRedirect(WebLink.URL_HOME);
         return;

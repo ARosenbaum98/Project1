@@ -25,7 +25,7 @@ public class WebLink {
     public static void signinRedirect(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         // Get user
-        User user = LoginCookie.getLoginUser(request);
+        User user = LoginCookie.getLoginUserFromServer(request);
 
         // Send redirect if not logged in
         if(user==null){
