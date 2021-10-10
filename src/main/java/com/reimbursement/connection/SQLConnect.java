@@ -183,17 +183,15 @@ public class SQLConnect<Bean>{
     /**
      * @param obj POJO To be inserted
      */
-    public Serializable insert(Bean obj){
+    public void insert(Bean obj){
         beginTransaction();
 
-        Serializable id = this.session.save(obj);
+        this.session.save(obj);
         this.session.flush();
 
         if (autoCommit) {
             this.commitTransaction();
         }
-
-        return id;
 
     }
 
@@ -211,16 +209,16 @@ public class SQLConnect<Bean>{
 
     }
 
-//    public void update(Serializable id, String[] cols, Serializable[] values){
-//        beginTransaction();
-//
-//        Bean obj = session.get(beanClass, id);
-//
-//        Bean student = session.load(beanClass, this.getPrimaryKey(obj));
-//
-//        //TODO Add in code to find column names in object and update values
-//
-//    }
+    public void update(Serializable id, String[] cols, Serializable[] values){
+        beginTransaction();
+
+        Bean obj = session.get(beanClass, id);
+
+        Bean student = session.load(beanClass, this.getPrimaryKey(obj));
+
+        //TODO Add in code to find column names in object and update values
+
+    }
 
     public void update(Bean obj){
         beginTransaction();

@@ -11,11 +11,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import javax.persistence.Entity;
 
 @Entity
 @Table(name="p1_users")
 public class User {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -75,71 +75,54 @@ public class User {
 
     @Column(name = "zip")
     private Integer zip;
-
-    @ManyToMany( fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-    @JoinTable(
-            name = "p1_manager_employee_map",
-            joinColumns = {
-                @JoinColumn(name = "employee_id")
-            },
-            inverseJoinColumns = {
-               @JoinColumn(name = "manager_id")
-            }
-    )
-    private List<User> managers = new ArrayList<>();
-
-    @ManyToMany( fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-    @JoinTable(
-            name = "p1_manager_employee_map",
-            joinColumns = {
-                    @JoinColumn(name = "manager_id")
-            },
-            inverseJoinColumns = {
-                    @JoinColumn(name = "employee_id")
-            }
-    )
-    private List<User> supervisees = new ArrayList<User>();
-
-    @OneToMany(
-            targetEntity = ReimbursementRequest.class,
-            fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
-    @JoinColumn(name = "request_id")
-    private List<ReimbursementRequest> requests = new ArrayList<>();
-
-    //GETTERS AND SETTERS
-
-    public List<ReimbursementRequest> getRequests() {
-        return requests;
-    }
-
-    public void addRequest(ReimbursementRequest... requests) {
-        this.requests.addAll(Arrays.asList(requests));
-    }
-
-    /**
-     * @return Gets all managers for employee user - returns null if user is a manager
-     */
-    public List<User> getManagers() {
-        if (isManager) return null;
-        return managers;
-    }
-
-    public void addManagers(User... managers) {
-        this.managers.addAll(Arrays.asList(managers));
-    }
-
-    /**
-     * @return Gets all supervisees for manager user - returns null if user is not a manager
-     */
-    public List<User> getSupervisees() {
-        if(!isManager) return null;
-        return supervisees;
-    }
-
-    public void addSupervisee(User... supervisees) {
-        this.supervisees.addAll(Arrays.asList(supervisees));
-    }
+//
+//    @ManyToMany( fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+//    @JoinTable(
+//            name = "p1_manager_employee_map",
+//            joinColumns = {
+//                @JoinColumn(name = "employee_id")
+//            },
+//            inverseJoinColumns = {
+//               @JoinColumn(name = "manager_id")
+//            }
+//    )
+//    private List<User> managers = new ArrayList<>();
+//
+//    @ManyToMany( fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+//    @JoinTable(
+//            name = "p1_manager_employee_map",
+//            joinColumns = {
+//                    @JoinColumn(name = "manager_id")
+//            },
+//            inverseJoinColumns = {
+//                    @JoinColumn(name = "employee_id")
+//            }
+//    )
+//    private List<User> supervisees = new ArrayList<User>();
+//
+//    /**
+//     * @return Gets all managers for employee user - returns null if user is a manager
+//     */
+//    public List<User> getManagers() {
+//        if(isManager) return null;
+//        return managers;
+//    }
+//
+//    public void addManagers(User... managers) {
+//        this.managers.addAll(Arrays.asList(managers));
+//    }
+//
+//    /**
+//     * @return Gets all supervisees for manager user - returns null if user is not a manager
+//     */
+//    public List<User> getSupervisees() {
+//        if(!isManager) return null;
+//        return supervisees;
+//    }
+//
+//    public void addSupervisee(User... supervisees) {
+//        this.supervisees.addAll(Arrays.asList(supervisees));
+//    }
 
     public Integer getId() {
         return id;

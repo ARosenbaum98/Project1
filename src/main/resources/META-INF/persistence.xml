@@ -1,23 +1,9 @@
-<persistence>
-    <persistence-unit name="my-persistence-unit">
-        <description>JpaForBeginners</description>
-        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+             version="2.2">
+    <persistence-unit name="default">
 
-        <properties>
-            <property name="hibernate.connection.driver_class" value="org.postgresql.Driver" />
-            <property name="hibernate.connection.url" value="jdbc:postgresql://javafs-210907-rds.cdymww1sot6d.us-east-2.rds.amazonaws.com:5432/" />
-            <property name="hibernate.connection.username" value="master" />
-            <property name="hibernate.connection.password" value="Goaway98test" />
-
-            <property name="hibernate.enable_lazy_load_no_trans">true</property>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL95Dialect"/>
-        </properties>
     </persistence-unit>
 </persistence>
-
-
-
-    <!-- Do Mappings-->
-    <mapping class="com.reimbursement.webmodels.User"/>
-    <mapping class="com.reimbursement.webmodels.ReimbursementRequest"/>
