@@ -1,9 +1,15 @@
 package com.reimbursement.connection;
 
+import com.reimbursement.webmodels.ReimbursementRequest;
+import com.reimbursement.webmodels.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.boot.Metadata;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.jdbc.Work;
 import org.hibernate.query.Query;
 
@@ -15,10 +21,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Properties;
 
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Column;
-
+import javax.persistence.*;
 
 public class SQLConnect<Bean>{
 
@@ -65,11 +68,17 @@ public class SQLConnect<Bean>{
     }
 
     private void configure(){
+
         Configuration config = new Configuration().configure();
 
 
         if(config != null){
-            // Add beans to config
+            // Add dependency beans to config
+            JoinColumn[] joins = beanClass.getAnnotationsByType(JoinColumn.class);
+
+            for(JoinColumn join : joins){
+                config.addAnnotatedClass(join.getClass());
+            }
             config.addAnnotatedClass(beanClass);
 
             // Set Properties
@@ -183,15 +192,17 @@ public class SQLConnect<Bean>{
     /**
      * @param obj POJO To be inserted
      */
-    public void insert(Bean obj){
+    public Serializable insert(Bean obj){
         beginTransaction();
 
-        this.session.save(obj);
+        Serializable id = this.session.save(obj);
         this.session.flush();
 
         if (autoCommit) {
             this.commitTransaction();
         }
+
+        return id;
 
     }
 
@@ -209,16 +220,16 @@ public class SQLConnect<Bean>{
 
     }
 
-    public void update(Serializable id, String[] cols, Serializable[] values){
-        beginTransaction();
-
-        Bean obj = session.get(beanClass, id);
-
-        Bean student = session.load(beanClass, this.getPrimaryKey(obj));
-
-        //TODO Add in code to find column names in object and update values
-
-    }
+//    public void update(Serializable id, String[] cols, Serializable[] values){
+//        beginTransaction();
+//
+//        Bean obj = session.get(beanClass, id);
+//
+//        Bean student = session.load(beanClass, this.getPrimaryKey(obj));
+//
+//        //TODO Add in code to find column names in object and update values
+//
+//    }
 
     public void update(Bean obj){
         beginTransaction();

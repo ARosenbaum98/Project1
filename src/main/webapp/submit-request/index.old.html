@@ -1,0 +1,118 @@
+
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+        <link rel="icon" href="http://127.0.0.1:5500/imgs/favcon.png">
+    
+        <!-- Banner CSS -->
+        <link rel="stylesheet" media="screen"
+              href="http://127.0.0.1:5500/css/site-wide/banner.css">
+        <link rel="stylesheet" media="screen and (max-width: 680px)"
+              href="http://127.0.0.1:5500/css/site-wide/banner-mobile.css">
+    
+        <!-- Main Content CSS -->
+        <link rel="stylesheet" media="screen"
+              href="http://127.0.0.1:5500/css/site-wide/main.css">
+        
+        <!-- Footer CSS -->
+        <link rel="stylesheet"
+              media="screen" href="http://127.0.0.1:5500/css/site-wide/footer.css">
+    
+        <title>Reimbursement App</title>
+    
+    </head>
+    
+    
+    <!-- Page Specific CSS -->
+    <!-- Dashboard CSS -->
+    
+    <body>
+    
+    <div id="page-container">
+    
+        
+    <header id="site-banner">
+        <div id="banner-logo">
+            <img src="http://127.0.0.1:5500/imgs/favcon.png" height = "50px" alt="logo">
+            <div id="banner-company-name-slogan">
+                <h1 id="banner-company-name">NoBody Enterprise</h1>
+                <h2 id="banner-company-slogan">We don't exist, we won't exist</h2>
+            </div>
+        </div>
+    
+        <nav id="banner-nav-button-container">
+    
+            <ul id="banner-nav-list">
+                <li class="navbar">
+                    <div class="navbar-button">
+                        <a class="navbar-button-text" href="http://127.0.0.1:5500/profile/">
+                            My Profile
+                        </a>
+                    </div>
+                </li>
+                <li class="navbar">
+                    <div class="navbar-button">
+                        <a class="navbar-button-text" href="http://127.0.0.1:5500/">
+                            Dashboard
+                        </a>
+                    </div>
+                </li>
+                <li class="navbar">
+                    <div class="navbar-button">
+                        <a class="navbar-button-text" href="http://127.0.0.1:5500/logout">
+                            Logout
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    
+        <!-- Page Specific CSS -->
+        <!-- Login CSS -->
+        <link rel="stylesheet" media="screen"
+              href="http://127.0.0.1:5500/css/submit-request/submit-request.css">
+    
+
+        <div class="background">
+        <h2 class="submit-header">Submit Reimbursement Request</h2>
+            <form action="../submit-request/" method="post">
+
+                <div class="expense-containers">
+                    <span>Amount</span>
+                    <input type="number" name="expense-amount" id="reimbursement-amount">
+                </div>
+                <div class="expense-containers">
+                    <span>Description</span><br>
+                    <textarea name="expense-desc" id="reimbursement-desc" rows="3"></textarea>
+                </div>
+                <div class="expense-containers">
+                    <span>Date of Expense</span>
+                    <input type="date" name="expense-date" id="reimbursement-date">
+                </div>
+
+                
+
+
+                <button class="submit-request">
+                submit
+                </button>
+            </form>
+
+        </div>
+    
+    
+        <footer id="page-end-bar">
+    
+        <p>Copyright 2021 NoBody Enterprise</p>
+    
+    </footer>
+    
+    </div>
+    </body>
+    </html>

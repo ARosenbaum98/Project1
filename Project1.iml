@@ -29,7 +29,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
-          <factory-entry name="default" value="45289d99-4c7d-4768-896a-d9a8afc97d55" />
+          <factory-entry name="Project1" />
         </datasource-mapping>
         <naming-strategy-map>
           <unit-entry name="default" value="org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl" />
