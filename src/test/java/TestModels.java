@@ -24,12 +24,12 @@ public class TestModels {
         connectRequest = new SQLConnect<>(ReimbursementRequest.class);
     }
 
-    @Ignore
+    @Test
     public void testJUnit(){
         assertTrue(true);
     }
 
-    @Ignore
+    @Test
     public void testHibernateGetUser(){
 
         User me = connectUser.getByPrimaryKey(0);
@@ -37,14 +37,14 @@ public class TestModels {
 
     }
 
-    @Ignore
+    @Test
     public void testHibernateGetUserByUsername(){
 
         User me = connectUser.getByNaturalKey("username", "arosenbaum");
         assertNotNull(me);
     }
 
-    @Ignore
+    @Test
     public void testHibernateGetUserByUniqueValue(){
 
         User expect = connectUser.getByNaturalKey("username", "arosenbaum");
@@ -53,7 +53,7 @@ public class TestModels {
         assertEquals(expect, actual);
     }
 
-    @Ignore
+    @Test
     public void getUsernameAndPassword(){
         User expect = connectUser.getByNaturalKey("username", "arosenbaum");
         User actual = connectUser.getUnique(
@@ -64,14 +64,14 @@ public class TestModels {
         assertEquals(expect, actual);
     }
 
-    @Ignore
+    @Test
     public void getListOfAllUsers(){
         List<User> users = connectUser.get(new String[]{},new Object[]{});
 
         assertNotNull(users);
     }
 
-    @Ignore
+    @Test
     public void testInsertDeleteUser(){
 
         connectUser = new SQLConnect<>(User.class, true, Connection.TRANSACTION_READ_UNCOMMITTED);
@@ -118,7 +118,7 @@ public class TestModels {
         assertNull(connectUser.getByNaturalKey("username",user.getUsername()));
     }
 
-    @Ignore
+    @Test
     public void getSupervisees(){
         User me = connectUser.getByPrimaryKey(0);
         assertNotNull(me.getSupervisees());

@@ -76,7 +76,7 @@ public class User {
     @Column(name = "zip")
     private Integer zip;
 
-    @ManyToMany( fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @ManyToMany( fetch = FetchType.LAZY, cascade = CascadeType.MERGE, targetEntity = User.class)
     @JoinTable(
             name = "p1_manager_employee_map",
             joinColumns = {
@@ -88,7 +88,7 @@ public class User {
     )
     private List<User> managers = new ArrayList<>();
 
-    @ManyToMany( fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @ManyToMany( fetch = FetchType.LAZY, cascade = CascadeType.MERGE, targetEntity = User.class)
     @JoinTable(
             name = "p1_manager_employee_map",
             joinColumns = {
@@ -101,7 +101,6 @@ public class User {
     private List<User> supervisees = new ArrayList<User>();
 
     @JoinColumn(
-            name = "p1_reimbursement_requests",
             referencedColumnName = "user_id")
     @OneToMany(
             targetEntity = ReimbursementRequest.class,

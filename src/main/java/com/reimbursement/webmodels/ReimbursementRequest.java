@@ -8,6 +8,7 @@ import java.util.Objects;
 @Table(name ="p1_reimbursement_requests")
 public class ReimbursementRequest {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "request_id", nullable = false)
     private int id;
 
@@ -32,8 +33,8 @@ public class ReimbursementRequest {
     @Column(name = "date_of_approval")
     private LocalDateTime dateOfApproval;
 
-    @JoinColumn(name = "p1_users", referencedColumnName = "user_id")
-    @ManyToOne(targetEntity = User.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    @ManyToOne(targetEntity = User.class)
     private User user;
 
     public ReimbursementRequest(int id, Boolean isPending, Boolean isApproved, double amount, String description, LocalDateTime dateOfPurchase, LocalDateTime dateOfSubmission, LocalDateTime dateOfApproval, User user) {

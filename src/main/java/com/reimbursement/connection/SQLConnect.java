@@ -15,9 +15,12 @@ import org.hibernate.query.Query;
 
 import org.apache.log4j.Logger;
 import java.io.Serializable;
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 
@@ -74,12 +77,9 @@ public class SQLConnect<Bean>{
 
         if(config != null){
             // Add dependency beans to config
-            JoinColumn[] joins = beanClass.getAnnotationsByType(JoinColumn.class);
 
-            for(JoinColumn join : joins){
-                config.addAnnotatedClass(join.getClass());
-            }
-            config.addAnnotatedClass(beanClass);
+            config.addAnnotatedClass(ReimbursementRequest.class);
+            config.addAnnotatedClass(User.class);
 
             // Set Properties
             Properties properties = config.getProperties();
@@ -318,6 +318,17 @@ public class SQLConnect<Bean>{
             }
         }
         if(!set) this.primaryKey = null;
+    }
+
+    private List<Class> searchAnnotations(Class... keys){
+        List<Class> annotations = new ArrayList<>();
+        for (Field field : this.beanClass.getDeclaredFields()) {
+            for(Class key : keys){
+                annotations.addAll(Arrays.asList(field.getAnnotationsByType(key)));
+            }
+        }
+        return annotations;
+
     }
 
     private Serializable getPrimaryKey(Bean bean) {
