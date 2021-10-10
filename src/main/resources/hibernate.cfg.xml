@@ -16,8 +16,8 @@
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL9Dialect</property>
 
         <!-- Debug show SQL logs-->
-        <property name="hibernate.show_sql">true</property> <!-- Show sql statements on run -->
-        <property name="hibernate.format_sql">true</property> <!-- Format SQL statements for readability-->
+<!--        <property name="hibernate.show_sql">true</property> &lt;!&ndash; Show sql statements on run &ndash;&gt;-->
+<!--        <property name="hibernate.format_sql">true</property> &lt;!&ndash; Format SQL statements for readability&ndash;&gt;-->
 
 <!--        Lazy Loading -->
         <property name="hibernate.enable_lazy_load_no_trans">true</property>

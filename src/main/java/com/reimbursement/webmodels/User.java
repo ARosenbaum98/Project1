@@ -133,11 +133,17 @@ public class User {
     }
 
     public String getAddressState() {
-        return addressState;
+        if(addressState!=null){
+            return addressState;
+        }
+        return "";
     }
 
     public String getAddressCity() {
-        return addressCity;
+        if(addressCity!=null){
+            return addressCity;
+        }
+        return "";
     }
 
     public Integer getPictureId() {
@@ -145,27 +151,45 @@ public class User {
     }
 
     public String getGender() {
-        return gender;
+        if(gender!=null){
+            return gender;
+        }
+        return "";
     }
 
     public String getSuffix() {
-        return suffix;
+        if(suffix!=null){
+            return suffix;
+        }
+        return "";
     }
 
     public String getLname() {
-        return lname;
+        if(lname!=null){
+            return lname;
+        }
+        return "";
     }
 
     public String getMname() {
-        return mname;
+        if(mname!=null){
+            return mname;
+        }
+        return "";
     }
 
     public String getFname() {
-        return fname;
+        if(fname!=null){
+            return fname;
+        }
+        return "";
     }
 
     public String getPrefix() {
-        return prefix;
+        if(prefix!=null){
+            return prefix;
+        }
+        return "";
     }
 
     public LocalDateTime getDateJoined() {
@@ -173,15 +197,24 @@ public class User {
     }
 
     public String getPassword() {
-        return password;
+        if(password!=null){
+            return password;
+        }
+        return "";
     }
 
     public String getUsername() {
-        return username;
+        if(username!=null){
+            return username;
+        }
+        return "";
     }
 
     public String getEmail() {
-        return email;
+        if(email!=null){
+            return email;
+        }
+        return "";
     }
 
     public boolean getIsManager() {
@@ -189,16 +222,26 @@ public class User {
     }
 
     public String getAddressLine1() {
-        return addressLine1;
+        if(addressLine1!=null){
+            return addressLine1;
+        }
+        return "";
     }
 
     public String getAddressLine2() {
-        return addressLine2;
+        if(addressLine2!=null){
+            return addressLine2;
+        }
+        return "";
     }
 
     public Integer getZip() {
         return zip;
     }
+    public String getDateJoinedAsString(){
+        return this.getDateJoined().getMonthValue()+"/"+this.getDateJoined().getDayOfMonth()+"/"+this.getDateJoined().getYear();
+    }
+
 
     public void setManager(boolean manager) {
         isManager = manager;
@@ -219,7 +262,6 @@ public class User {
     public void setDateJoined(LocalDateTime dateJoined) {
         this.dateJoined = dateJoined;
     }
-
     public void setPrefix(String prefix) {
         this.prefix = prefix;
     }

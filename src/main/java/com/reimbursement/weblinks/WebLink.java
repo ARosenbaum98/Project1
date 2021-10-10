@@ -22,16 +22,17 @@ public class WebLink {
     public static final String URL_SITE_IMGS = URL_HOME+PATH_SITE_IMGS;
     public static final String URL_LOGOUT = URL_HOME+"logout";
 
-    public static void signinRedirect(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public static User signinRedirect(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         // Get user
         User user = LoginCookie.getLoginUserFromServer(request);
 
         // Send redirect if not logged in
         if(user==null){
-            response.sendRedirect("/Project1_war_exploded/sign-in");
-            return;
+            response.sendRedirect(URL_HOME+"sign-in");
+            return null;
         }
+        return user;
     }
 
 }
