@@ -21,7 +21,7 @@
 
     <div class="background">
         <h2 class="submit-header">Submit Reimbursement Request</h2>
-        <form action="../submit-request/" method="post">
+        <form action="../submitrequest" method="post">
 
             <div class="expense-containers">
                 <span>Amount</span>
