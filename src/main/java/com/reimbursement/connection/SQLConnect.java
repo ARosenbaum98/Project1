@@ -347,22 +347,27 @@ public class SQLConnect<Bean>{
     }
 
     private Query createQueryFromParams(String[] cols, Object[] values){
+
         String query = "FROM "+beanClass.getName();
 
         int i = 0;
         for(String col : cols){
-            if(i>0) query+= " AND ";
-            else query+=" WHERE ";
-            query+= col+" = :"+col;
-            i++;
+            if(col!=null || values[i]!=null) {
+                if (i > 0) query += " AND ";
+                else query += " WHERE ";
+                query += col + " = :" + col;
+                i++;
+            }
         }
 
         Query q = session.createQuery(query);
 
         i = 0;
         for(Object value : values){
-            q.setParameter(cols[i], value);
-            i++;
+            if(cols[i]!=null || values[i]!=null) {
+                q.setParameter(cols[i], value);
+                i++;
+            }
         }
 
         return q;

@@ -25,10 +25,6 @@
 
     <jsp:include page="/static-html/header.jsp"/>
 
-    <%
-        System.out.println(request.getParameter("id"));
-    %>
-
     <div class="background">
         <h2 class="request-header">Reimbursement Request</h2>
 
