@@ -35,20 +35,26 @@
 
             switch (arg) {
                 case "man_id":
+                    userCols = new ArrayList<>();
+                    userVals = new ArrayList<>();
                     managerCols = new ArrayList<>();
-                    managerCols.add("user_id");
                     managerVals = new ArrayList<>();
-                    managerVals.add(val);
+                    managerCols.add("user_id");
+                    managerVals.add(Integer.parseInt(val));
                     break l1;
                 case "empl_id":
                     userCols = new ArrayList<>();
                     userVals = new ArrayList<>();
+                    managerCols = new ArrayList<>();
+                    managerVals = new ArrayList<>();
                     userCols.add("user_id");
-                    userVals.add(val);
+                    userVals.add(Integer.parseInt(val));
                     break l1;
                 case "email":
                     userCols = new ArrayList<>();
                     userVals = new ArrayList<>();
+                    managerCols = new ArrayList<>();
+                    managerVals = new ArrayList<>();
                     userCols.add("email");
                     userVals.add(val);
                     break l1;
