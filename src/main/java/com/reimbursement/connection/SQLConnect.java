@@ -177,6 +177,10 @@ public class SQLConnect<Bean>{
 
         List<Bean> b = q.getResultList();
 
+        if (autoCommit) {
+            this.commitTransaction();
+        }
+
         return b;
     }
 

@@ -6,6 +6,8 @@
 <%@ page import="com.reimbursement.connection.SQLConnect" %>
 <%@ page import="java.util.Locale" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.Enumeration" %>
+<%@ page import="java.util.ArrayList" %>
 <html>
 <jsp:include page="/static-html/head.jsp"/>
 
@@ -16,10 +18,82 @@
 <% User user = WebLink.signinRedirect(request, response);%>
 <% SQLConnect<User> userSQLConnect = new SQLConnect<>(User.class);%>
 <%
+    Enumeration<String> args = request.getParameterNames();
 
-    String[] cols = new String[]{};
-    Object[] vals = new Object[]{};
-    List<User> displayUsers = userSQLConnect.get(cols, vals);
+    List<String> userCols = new ArrayList<>();
+    List<Object> userVals = new ArrayList<>();
+
+    List<String> managerCols = new ArrayList<>();
+    List<Object> managerVals = new ArrayList<>();
+
+    l1: while(args.hasMoreElements()){
+        String arg = args.nextElement();
+        String val = request.getParameter(arg);
+        System.out.println(arg+" = "+val);
+
+        if(!val.equals("")) {
+
+            switch (arg) {
+                case "man_id":
+                    managerCols = new ArrayList<>();
+                    managerCols.add("user_id");
+                    managerVals = new ArrayList<>();
+                    managerVals.add(val);
+                    break l1;
+                case "empl_id":
+                    userCols = new ArrayList<>();
+                    userVals = new ArrayList<>();
+                    userCols.add("user_id");
+                    userVals.add(val);
+                    break l1;
+                case "email":
+                    userCols = new ArrayList<>();
+                    userVals = new ArrayList<>();
+                    userCols.add("email");
+                    userVals.add(val);
+                    break l1;
+                case "fname":
+                    userCols.add("fname");
+                    userVals.add(val);
+                    break;
+                case "lname":
+                    userCols.add("lname");
+                    userVals.add(val);
+                    break;
+                case "man_lname":
+                    managerCols.add("lname");
+                    managerVals.add(val);
+                    break;
+            }
+        }
+    }
+
+    List<User> displayUsers = userSQLConnect.get( userCols.toArray(new String[0]), userVals.toArray());
+    List<User> managersList;
+    if(managerCols.size()>0){
+        managersList = userSQLConnect.get(managerCols.toArray(new String[0]), managerVals.toArray());
+        int i = 0;
+        while(i<displayUsers.size()){
+            User employee = displayUsers.get(i);
+            if(!employee.isManager()){
+                int j = 0;
+                while(j<managersList.size()) {
+                    User manager = managersList.get(j);
+                    if (!employee.getManagers().contains(manager)) {
+                        displayUsers.remove(employee);
+                        i--;
+                    }
+
+                    j++;
+                }
+            }else{
+                displayUsers.remove(employee);
+                i--;
+            }
+            i++;
+        }
+    }
+
 %>
 
 
@@ -35,21 +109,22 @@
     <div class="background">
 
         <h2>Seach Employees</h2>
-        <form id="search-employees-form" action="">
+        <form id="search-employees-form" action="<%out.print(WebLink.URL_HOME);%>view-employees" method="get">
             <table id="search">
                 <tr>
                     <th><label for="fname">First Name</label></th>
                     <th><label for="lname">Last Name</label></th>
                     <th><label for="email">Email</label></th>
-                    <th><label for="manager-name">Manager Last Name</label></th>
+                    <th><label for="man_lname">Manager Last Name</label></th>
                 </tr>
                 <tr>
-                    <td><input id ="fname" type="text"></td>
-                    <td><input id ="lname" type="text"></td>
-                    <td><input id ="email" type="text"></td>
-                    <td><input id ="manager-name" type="text"></td>
+                    <td><input id ="fname" name ="fname" type="text"></td>
+                    <td><input id ="lname" name ="lname" type="text"></td>
+                    <td><input id ="email" name ="email" type="text"></td>
+                    <td><input id ="man_lname" name ="man_lname" type="text"></td>
                 </tr>
             </table>
+            <button type="submit">Submit</button>
         </form>
         <h2 id="request-list-header">Employees List</h2>
 
