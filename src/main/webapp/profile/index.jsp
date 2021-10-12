@@ -65,7 +65,7 @@
                 <span>Email:</span><p><%out.print(user.getEmail());%></p>
             </div>
             <div class="profile-content" id="date-joined">
-                <span>Date:</span><%out.print(user.getDateJoinedAsString());
+                <span>Date Joined:</span><%out.print(user.getDateJoinedAsString());
             %>
             </div>
         </div>
@@ -78,7 +78,7 @@
         </div>
 
         <div id="link-to-tickets">
-            <a href="#">View Tickets</a>
+            <a href="<%out.print(WebLink.URL_HOME+"view-requests/?id="+user.getId());%>">View Requests</a>
         </div>
 
 

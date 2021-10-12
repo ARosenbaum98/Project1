@@ -28,3 +28,16 @@
     padding: 0 1%;
   }
 
+#link-to-tickets a{
+    padding: 10px;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1.5px;
+    border-color: var(--off-gray);
+    background-color: var(--off-lightgray);
+
+    font-size: 18px;
+    font-weight: 700;
+
+    box-shadow: 0px 5px 10px -5px var(--off-gray);
+}

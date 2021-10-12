@@ -34,6 +34,15 @@
             String[] cols = new String[12];
             Object[] vals = new Object[12];
 
+            Enumeration<String> args = request.getParameterNames();
+            while(args.hasMoreElements()){
+                String arg = args.nextElement();
+                if(arg.equals("id")){
+                    cols[0]="user_id";
+                    vals[0]=Integer.parseInt(request.getParameter(arg));
+                }
+            }
+
 
             List<ReimbursementRequest> requests = requestSQLConnect.get(cols, vals);
 
@@ -51,12 +60,23 @@
             <%
                 for(ReimbursementRequest reqst : requests){
                     out.print("<tr>\n");
-                    out.print("<td>"+reqst.getUser().getFname()+"</td>");
+                    out.print("<td>"+reqst.getUser().getFname()+" "+reqst.getUser().getLname()+"</td>");
                     out.print("<td>$"+reqst.getAmount()+"</td>");
                     out.print("<td>"+"("+reqst.getDateOfPurchase().getMonthValue()+"-"+reqst.getDateOfPurchase().getDayOfMonth()+"-"+reqst.getDateOfPurchase().getYear()+")"+"</td>");
                     out.print("<td>"+"("+reqst.getDateOfSubmission().getMonthValue()+"-"+reqst.getDateOfSubmission().getDayOfMonth()+"-"+reqst.getDateOfSubmission().getYear()+")"+"</td>");
-                    out.print("<td>"+((reqst.getIsPending())?"Pending":((reqst.getIsApproved()))?"Approved":"Denied")+"</td>");
+                    out.print("<td>"+((reqst.getIsPending())?"Pending":(((reqst.getIsApproved())?
+                            "Approved":"Denied")+
+                            ((reqst.getDateOfApproval()==null)?"": " ("
+                            +reqst.getDateOfApproval().getMonthValue()))+"-"+reqst.getDateOfApproval().getDayOfMonth()+"-"+reqst.getDateOfApproval().getYear()+")</td>"));
+
+                    out.print("<td><div id='link-to-tickets'>");
+                    out.print("<a href='"+WebLink.URL_HOME+"view-request-detail/?id="+reqst.getId()+"'>");
+                    out.print("View Request");
+                    out.print("</a></div></td>");
                     out.print("</tr>\n");
+
+
+
                 }
 
             %>
