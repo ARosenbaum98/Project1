@@ -15,6 +15,7 @@
 
 
 <% User user = WebLink.signinRedirect(request, response);%>
+<% if(user==null) throw new javax.servlet.jsp.SkipPageException();%>
 <% SQLConnect<ReimbursementRequest> requestSQLConnect = new SQLConnect<>(ReimbursementRequest.class);%>
 
 
@@ -40,6 +41,16 @@
                 if(arg.equals("id")){
                     cols[0]="user_id";
                     vals[0]=Integer.parseInt(request.getParameter(arg));
+                }else if(arg.equals("man_id")){
+                    SQLConnect<User> userConnect = new SQLConnect<>(User.class);
+                    int i = 0;
+                    for(User employee : user.getSupervisees()){
+                        userConnect.getByPrimaryKey(employee.getId());
+
+                        cols[i]="user_id";
+                        vals[i]=employee.getId();
+                        i++;
+                    }
                 }
             }
 

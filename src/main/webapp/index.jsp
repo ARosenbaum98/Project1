@@ -11,6 +11,7 @@
 
 
 <% User user = WebLink.signinRedirect(request, response); %>
+<% if(user==null) throw new javax.servlet.jsp.SkipPageException();%>
 <body>
 
     <div id="page-container">
@@ -36,19 +37,19 @@
 
                 <div id="activity-card-list">
 
-                    <div class="activity-card" id="activity-card-view-my-profile"><a class = "card-link" href="<%out.print(WebLink.URL_PROFILE);%>?id=<%out.print(user.getId());%>" class>
+                    <div class="activity-card" id="activity-card-view-my-profile"><a class = "card-link" href="<%out.print(WebLink.URL_PROFILE);%>?id=<%out.print(user.getId());%>">
                         <p>View My Profile</p>
                     </a></div>
-                    <div class="activity-card" id="activity-card-view-my-reimbursements"><a class = "card-link" href="<%out.print(WebLink.URL_VIEW_REQUEST+"?id="+user.getId());%>" class>
+                    <div <%if(user.isManager()) out.print("style='display: none'");%>  class="activity-card" id="activity-card-view-my-reimbursements"><a class = "card-link" href="<%out.print(WebLink.URL_VIEW_REQUEST+"?id="+user.getId());%>">
                         <p>View My Reimbursements</p>
                     </a></div>
-                    <div class="activity-card" id="activity-card-submit-reimbursement-request"><a class = "card-link" href="<%out.print(WebLink.URL_SUBMIT_REQUEST);%>" class>
+                    <div <%if(user.isManager()) out.print("style='display: none'");%> class="activity-card" id="activity-card-submit-reimbursement-request"><a class = "card-link" href="<%out.print(WebLink.URL_SUBMIT_REQUEST);%>">
                         <p>Submit Reimbursement Request</p>
                     </a></div>
-                    <div class="activity-card" id="activity-card-view-employees"><a class = "card-link" href="<%out.print(WebLink.URL_VIEW_EMPLOYEES+"?man_id="+user.getId());%>" class>
+                    <div <%if(!user.isManager()) out.print("style='display: none'");%> class="activity-card" id="activity-card-view-employees"><a class = "card-link" href="<%out.print(WebLink.URL_VIEW_EMPLOYEES+"?man_id="+user.getId());%>">
                         <p>View Employees</p>
                     </a></div>
-                    <div class="activity-card" id="activity-card-view-reimbursement-requests"><a class = "card-link" href="<%out.print(WebLink.URL_VIEW_REQUEST);%>" class>
+                    <div <%if(!user.isManager()) out.print("style='display: none'");%> class="activity-card" id="activity-card-view-reimbursement-requests"><a class = "card-link" href="<%if(user.isManager()) out.print(WebLink.URL_VIEW_REQUEST+"?man_id="+user.getId()); else out.print(WebLink.URL_VIEW_REQUEST+"?man_id="+user.getId());%>">
                         <p>View Reimbursement Requests</p>
                     </a></div>
 
