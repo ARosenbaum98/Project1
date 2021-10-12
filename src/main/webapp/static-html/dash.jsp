@@ -18,21 +18,21 @@
 
         <div id="activity-card-list">
 
-            <div class="activity-card" id="activity-card-view-my-profile">
+            <div class="activity-card" id="activity-card-view-my-profile"><a class = "card-link" href="#" class>
                 <p>View My Profile</p>
-            </div>
-            <div class="activity-card" id="activity-card-view-my-reimbursements">
+            </a></div>
+            <div class="activity-card" id="activity-card-view-my-reimbursements"><a class = "card-link" href="#" class>
                 <p>View My Reimbursements</p>
-            </div>
-            <div class="activity-card" id="activity-card-submit-reimbursement-request">
+            </a></div>
+            <div class="activity-card" id="activity-card-submit-reimbursement-request"><a class = "card-link" href="#" class>
                 <p>Submit Reimbursement Request</p>
-            </div>
-            <div class="activity-card" id="activity-card-view-employees">
+            </a></div>
+            <div class="activity-card" id="activity-card-view-employees"><a class = "card-link" href="#" class>
                 <p>View Employees</p>
-            </div>
-            <div class="activity-card" id="activity-card-view-reimbursement-requests">
+            </a></div>
+            <div class="activity-card" id="activity-card-view-reimbursement-requests"><a class = "card-link" href="#" class>
                 <p>View Reimbursement Requests</p>
-            </div>
+            </a></div>
 
         </div>
         

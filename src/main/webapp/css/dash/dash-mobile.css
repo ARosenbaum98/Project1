@@ -36,6 +36,40 @@
     height: 20vw;
 }
 
-.activity-card>p{
+.activity-card p{
     font-size: 2.5vw;
+}
+
+.activity-card:hover{
+    animation-name: raise-card;
+    animation-duration: .5s;
+
+    width: 21vw;
+    height: 21vw;
+    box-shadow: 0px 12px 15px -5px #000;
+
+}
+
+.activity-card:hover p{
+    animation-name: raise-card-text;
+    animation-duration: .5s;
+    font-size: 2.70vw;
+}
+
+
+@keyframes raise-card {
+    0%{
+        width: 20vw;
+        height: 20vw;
+        box-shadow: 0px 5px 15px -5px #000;
+
+    }
+
+}
+
+@keyframes raise-card-text {
+    0%{
+        font-size: 2.5vw;
+    }
+
 }

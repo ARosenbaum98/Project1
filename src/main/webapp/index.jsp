@@ -11,7 +11,6 @@
 
 
 <% WebLink.signinRedirect(request, response); %>
-
 <body>
 
     <div id="page-container">
