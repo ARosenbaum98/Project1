@@ -2,6 +2,8 @@
 <%@ page import="com.reimbursement.webmodels.User" %>
 <%@ page import="java.time.DateTimeException" %>
 <%@ page import="java.time.LocalDateTime" %>
+<%@ page import="java.util.Enumeration" %>
+<%@ page import="com.reimbursement.connection.SQLConnect" %>
 <html>
 <jsp:include page="/static-html/head.jsp"/>
 
@@ -13,6 +15,20 @@
       href="<%out.print(WebLink.URL_CSS);%>profile/profile-mobile.css">
 
 <% User user = WebLink.signinRedirect(request, response);%>
+
+<%
+    Enumeration<String> args = request.getParameterNames();
+    while(args.hasMoreElements()){
+        String arg = args.nextElement();
+        if(arg.equals("id")){
+            SQLConnect<User> connect = new SQLConnect<>(User.class);
+            User newUser = connect.getByPrimaryKey(Integer.parseInt(request.getParameter(arg)));
+            if(newUser!=null){
+                user = newUser;
+            }
+        }
+    }
+%>
 
 <body>
 

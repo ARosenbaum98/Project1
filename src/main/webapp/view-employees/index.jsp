@@ -140,8 +140,8 @@
             <%
                 for(User rowUser : displayUsers){
                     out.print("<tr>");
-                    out.print("<td>"+rowUser.getFname()+"</td>");
-                    out.print("<td>"+rowUser.getLname()+"</td>");
+                    out.print("<td><a href='"+WebLink.URL_PROFILE+"?id="+rowUser.getId()+"'>"+rowUser.getFname()+"</a></td>");
+                    out.print("<td><a href='"+WebLink.URL_PROFILE+"?id="+rowUser.getId()+"'>"+rowUser.getLname()+"</a></td>");
                     out.print("<td>"+rowUser.getEmail()+"</td>");
 
                     out.print("<td>");
