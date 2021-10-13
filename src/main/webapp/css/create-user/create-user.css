@@ -1,0 +1,44 @@
+.background {
+    position: relative;
+    height: 50%;
+    width: 50%;
+    margin: auto;
+    padding: 7.5%;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    background-color: var(--off-white);
+    
+    box-shadow: 0px 10px 30px -5px #000;
+  }
+  
+  #create-user-form{
+      padding-top: 30px;
+      display: flex;
+      flex-direction: column;
+      row-gap: 10px;
+  }
+
+  #user-names, #user-account-info{
+    display: flex;
+    flex-direction: row;
+  }
+
+  #user-names input , #user-account-info input, #user-names select{
+      width: 95%;
+      row-gap: 1px;
+  }
+
+  .user-containers{
+      display:flex;
+      flex-direction: column;
+
+      justify-content: space-between;
+      align-content: space-between;
+      gap: 10px;
+      padding-top: 10px;
+  }
+
+  .submit-user{
+      margin-top: 10px;
+  }
+
