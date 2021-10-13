@@ -32,30 +32,33 @@
         <h2 id="request-list-header">Reimbursement Requests</h2>
 
         <%
-            String[] cols = new String[12];
-            Object[] vals = new Object[12];
+            String[] cols = new String[24];
+            Object[] vals = new Object[24];
 
+            List<ReimbursementRequest> requests = null;
             Enumeration<String> args = request.getParameterNames();
             while(args.hasMoreElements()){
                 String arg = args.nextElement();
                 if(arg.equals("id")){
                     cols[0]="user_id";
                     vals[0]=Integer.parseInt(request.getParameter(arg));
+                    requests = requestSQLConnect.get(cols, vals);
                 }else if(arg.equals("man_id")){
                     SQLConnect<User> userConnect = new SQLConnect<>(User.class);
                     int i = 0;
                     for(User employee : user.getSupervisees()){
                         userConnect.getByPrimaryKey(employee.getId());
-
                         cols[i]="user_id";
                         vals[i]=employee.getId();
                         i++;
                     }
+
+                    requests = requestSQLConnect.get("user_id", vals);
+                } else{
+                    requests = requestSQLConnect.get(new String[]{}, new String[]{});
                 }
             }
 
-
-            List<ReimbursementRequest> requests = requestSQLConnect.get(cols, vals);
 
 
         %>
@@ -71,7 +74,7 @@
             <%
                 for(ReimbursementRequest reqst : requests){
                     out.print("<tr>\n");
-                    out.print("<td>"+reqst.getUser().getFname()+" "+reqst.getUser().getLname()+"</td>");
+                    out.print("<td><a href='"+WebLink.URL_PROFILE+"?id="+reqst.getUser().getId()+"'>"+reqst.getUser().getFname()+" "+reqst.getUser().getLname()+"</a></td>");
                     out.print("<td>$"+reqst.getAmount()+"</td>");
                     out.print("<td>"+"("+reqst.getDateOfPurchase().getMonthValue()+"-"+reqst.getDateOfPurchase().getDayOfMonth()+"-"+reqst.getDateOfPurchase().getYear()+")"+"</td>");
                     out.print("<td>"+"("+reqst.getDateOfSubmission().getMonthValue()+"-"+reqst.getDateOfSubmission().getDayOfMonth()+"-"+reqst.getDateOfSubmission().getYear()+")"+"</td>");

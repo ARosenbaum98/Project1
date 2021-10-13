@@ -161,6 +161,27 @@ public class SQLConnect<Bean>{
         return bean;
     }
 
+    public List<Bean> get(String col, Object[] values) {
+
+        this.beginTransaction();
+
+        String[] cols = new String[values.length];
+        for(int i = 0; i<values.length; i++){
+            cols[i] = col;
+        }
+
+        Query q = createQueryFromParams(cols, values, false);
+
+
+        List<Bean> b = q.getResultList();
+
+        if (autoCommit) {
+            this.commitTransaction();
+        }
+
+        return b;
+    }
+
     /**
      * @param cols List of parameter columns
      * @param values List of parameter values
@@ -351,28 +372,38 @@ public class SQLConnect<Bean>{
     }
 
     private Query createQueryFromParams(String[] cols, Object[] values){
+        return createQueryFromParams(cols, values, true);
+    }
+
+    private Query createQueryFromParams(String[] cols, Object[] values, boolean anding){
 
         String query = "FROM "+beanClass.getName();
 
         int i = 0;
         for(String col : cols){
-            if(col!=null || values[i]!=null) {
-                if (i > 0) query += " AND ";
+            if((anding && (cols[i]!=null || values[i]!=null) )||
+                    (anding && (cols[i]!=null && values[i]!=null) )
+            ) {
+                if (i > 0) query += (anding)?" AND ":" OR ";
                 else query += " WHERE ";
                 query += col + " = :" + col;
                 i++;
             }
         }
 
+
         Query q = session.createQuery(query);
 
         i = 0;
         for(Object value : values){
-            if(cols[i]!=null || values[i]!=null) {
+            if((anding && (cols[i]!=null || values[i]!=null) )||
+                    (anding && (cols[i]!=null && values[i]!=null) )
+              ){
                 q.setParameter(cols[i], value);
                 i++;
             }
         }
+        System.out.println();
 
         return q;
     }
