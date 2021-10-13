@@ -146,6 +146,8 @@
                     <input type="text" name="address-zip">
                 </div>
 
+                <input type="hidden" name="manager" value=<%out.print(user.getId());%>>
+
                 <button class="submit-user">
                     submit
                 </button>

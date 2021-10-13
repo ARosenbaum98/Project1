@@ -4,6 +4,7 @@ import com.reimbursement.connection.SQLConnect;
 import com.reimbursement.webmodels.ReimbursementRequest;
 import com.reimbursement.webmodels.User;
 
+import javax.ejb.Local;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,23 +26,31 @@ public class CreateEmployeeServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        SQLConnect<ReimbursementRequest> connectRequest = new SQLConnect<>(ReimbursementRequest.class);
+        String email = request.getParameter("email");
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String fname = request.getParameter("fname");
+        String mname = request.getParameter("mname");
+        String lname = request.getParameter("lname");
+        String suffix = null;
+        String gender = request.getParameter("gender");
+        String address1 = request.getParameter("address-line-1");
+        String address2 = request.getParameter("address-line-2");
+        String city = request.getParameter("address-city");
+        String state = request.getParameter("address-state");
+        int zip = Integer.parseInt(request.getParameter("address-zip"));
 
-        response.setContentType("text/html");
-        PrintWriter out=response.getWriter();
+        LocalDateTime dateCreated = LocalDateTime.now();
 
-        request.getRequestDispatcher("/submit-request").include(request, response);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        User newUser = new User(-1,false, email, username, password, dateCreated, (gender.equals("M"))?"Mr":((gender.equals("F"))?"Ms":"Mx"),fname, mname, lname, suffix, gender, null, address1, address2, city, state, zip);
 
-        int amount = Integer.parseInt(request.getParameter("expense-amount")) ;
-        String desc =request.getParameter("expense-desc");
-        LocalDateTime expenseDate = LocalDate.parse(request.getParameter("expense-date"), formatter).atStartOfDay();
+        SQLConnect<User> connect = new SQLConnect(User.class);
+        newUser.addManagers(connect.getByPrimaryKey(Integer.parseInt(request.getParameter("manager"))));
 
-        User user = WebLink.signinRedirect(request, response);
-        ReimbursementRequest rRequest = new ReimbursementRequest(-1, true, null, amount, desc, expenseDate, LocalDateTime.now(), null, user);
 
-        connectRequest.insert(rRequest);
+        int newId = (Integer)connect.insert(newUser);
 
-        out.close();
+        response.sendRedirect(WebLink.URL_PROFILE+"?id="+newId);
+        return;
     }
 }

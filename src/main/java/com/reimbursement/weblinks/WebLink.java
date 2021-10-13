@@ -18,6 +18,7 @@ public class WebLink {
     public static final String PATH_VIEW_EMPLOYEES = "view-employees/";
     public static final String PATH_VIEW_REQUEST = "view-requests/";
     public static final String PATH_VIEW_REQUEST_DETAILS= "view-request-detail/";
+    public static final String PATH_CREATE_USER= "create-employee/";
 
 
     public static final String URL_SIGN_IN = URL_HOME+PATH_SIGN_IN;
@@ -30,7 +31,7 @@ public class WebLink {
     public static final String URL_VIEW_EMPLOYEES = URL_HOME+PATH_VIEW_EMPLOYEES;
     public static final String URL_VIEW_REQUEST = URL_HOME+PATH_VIEW_REQUEST;
     public static final String URL_VIEW_REQUEST_DETAIL = URL_HOME+PATH_VIEW_REQUEST_DETAILS;
-
+    public static final String URL_CREATE_USER = URL_HOME+PATH_CREATE_USER;
 
 
     public static User signinRedirect(HttpServletRequest request, HttpServletResponse response) throws IOException {

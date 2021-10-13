@@ -49,6 +49,9 @@
                     <div <%if(!user.isManager()) out.print("style='display: none'");%> class="activity-card" id="activity-card-view-employees"><a class = "card-link" href="<%out.print(WebLink.URL_VIEW_EMPLOYEES+"?man_id="+user.getId());%>">
                         <p>View Employees</p>
                     </a></div>
+                    <div <%if(!user.isManager()) out.print("style='display: none'");%> class="activity-card" id="activity-card-create-user"><a class = "card-link" href="<%out.print(WebLink.URL_CREATE_USER);%>">
+                        <p>Create User</p>
+                    </a></div>
                     <div <%if(!user.isManager()) out.print("style='display: none'");%> class="activity-card" id="activity-card-view-reimbursement-requests"><a class = "card-link" href="<%if(user.isManager()) out.print(WebLink.URL_VIEW_REQUEST+"?man_id="+user.getId()); else out.print(WebLink.URL_VIEW_REQUEST+"?man_id="+user.getId());%>">
                         <p>View Reimbursement Requests</p>
                     </a></div>
