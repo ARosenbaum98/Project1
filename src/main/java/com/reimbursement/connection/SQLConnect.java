@@ -161,6 +161,11 @@ public class SQLConnect<Bean>{
         return bean;
     }
 
+    /**
+     * @param col parameter of single column to get from
+     * @param values List of parameter values
+     * @return Returns list of items matching parameters
+     */
     public List<Bean> get(String col, Object[] values) {
 
         this.beginTransaction();
@@ -245,6 +250,9 @@ public class SQLConnect<Bean>{
 
     }
 
+    /**
+     * @param obj POJO To be updated
+     */
     public void update(Bean obj){
         beginTransaction();
 
