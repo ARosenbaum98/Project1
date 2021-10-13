@@ -140,7 +140,6 @@
                 <th>Last Name</th>
                 <th>Email</th>
                 <th>Manager(s)</th>
-                <th>Active Requests</th>
             </tr>
 
             <%
@@ -162,10 +161,6 @@
                         }else{
                             out.print("N/A");
                         }
-                    out.print("</td>");
-
-                    out.print("<td>{Number}</td>");
-                    out.print("</tr>");
                 }
 
             %>

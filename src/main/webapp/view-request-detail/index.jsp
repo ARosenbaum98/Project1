@@ -28,41 +28,51 @@
     <div class="background">
         <h2 class="request-header">Reimbursement Request</h2>
 
-        <div class="expense-containers">
-            <span>Submitter Name</span><p><%out.print(rRequest.getUser().getFname()+" "+rRequest.getUser().getLname());%></p>
-        </div>
-        <div class="expense-containers">
-            <span>Amount</span><p><%out.print(rRequest.getAmount());%></p>
-        </div>
-        <div class="expense-containers">
-            <span>Description</span><p><%out.print(rRequest.getDescription());%></p>
-        </div>
-        <div class="expense-containers">
-            <span>Date of Expense</span><p><%out.print(rRequest.getDateOfPurchase().getMonth().toString().charAt(0)+""+rRequest.getDateOfPurchase().getMonth().toString().toLowerCase(Locale.ROOT).substring(1)+" "+
-                                                       rRequest.getDateOfPurchase().getDayOfMonth()+", "+
-                                                       rRequest.getDateOfPurchase().getYear());%></p>
-        </div>
-        <div class="expense-containers">
-            <span>Date submitted</span><p><%out.print(
-                    rRequest.getDateOfSubmission().getMonth().toString().charAt(0)+""+rRequest.getDateOfSubmission().getMonth().toString().toLowerCase(Locale.ROOT).substring(1)+" "+
-                    rRequest.getDateOfSubmission().getDayOfMonth()+", "+
-                    rRequest.getDateOfSubmission().getYear());%></p>
-        </div>
-        <div class="expense-containers">
-            <span>Approval Status</span><p><%
-                if(rRequest.getIsPending()){
-                    out.print("<i>Request is Pending Manager Approval</i>");
-                }else{
-                    if(rRequest.getIsApproved()){
-                        out.print("Approved ");
+        <div class="expense">
+            <div class="expense-containers">
+                <span>Submitter Name</span><p><%out.print(rRequest.getUser().getFname()+" "+rRequest.getUser().getLname());%></p>
+            </div>
+            <div class="expense-containers">
+                <span>Amount</span><p><%out.print(rRequest.getAmount());%></p>
+            </div>
+            <div class="expense-containers">
+                <span>Description</span><p><%out.print(rRequest.getDescription());%></p>
+            </div>
+            <div class="expense-containers">
+                <span>Date of Expense</span><p><%out.print(rRequest.getDateOfPurchase().getMonth().toString().charAt(0)+""+rRequest.getDateOfPurchase().getMonth().toString().toLowerCase(Locale.ROOT).substring(1)+" "+
+                                                           rRequest.getDateOfPurchase().getDayOfMonth()+", "+
+                                                           rRequest.getDateOfPurchase().getYear());%></p>
+            </div>
+            <div class="expense-containers">
+                <span>Date submitted</span><p><%out.print(
+                        rRequest.getDateOfSubmission().getMonth().toString().charAt(0)+""+rRequest.getDateOfSubmission().getMonth().toString().toLowerCase(Locale.ROOT).substring(1)+" "+
+                        rRequest.getDateOfSubmission().getDayOfMonth()+", "+
+                        rRequest.getDateOfSubmission().getYear());%></p>
+            </div>
+            <div class="expense-containers">
+                <span>Approval Status</span><p><%
+                    if(rRequest.getIsPending()){
+                        out.print("<i>Request is Pending Manager Approval</i>");
                     }else{
-                        out.print("Denied ");
+                        if(rRequest.getIsApproved()){
+                            out.print("Approved ");
+                        }else{
+                            out.print("Denied ");
+                        }
+                        out.print("("+rRequest.getDateOfApproval().getMonthValue()+"-"+rRequest.getDateOfApproval().getDayOfMonth()+"-"+rRequest.getDateOfApproval().getYear()+")");
                     }
-                    out.print("("+rRequest.getDateOfApproval().getMonthValue()+"-"+rRequest.getDateOfApproval().getDayOfMonth()+"-"+rRequest.getDateOfApproval().getYear()+")");
-                }
 
 
-            %></p>
+                %></p>
+            </div>
+        </div>
+        <div id = "buttons">
+            <div class="approve-button" <%if(!user.isManager()|| !rRequest.getIsPending()) out.print("style='display: none'");%>>
+                <a href="<%out.print(WebLink.URL_HOME+"approverequest?approved=true&id="+rRequest.getId());%>">Approve</a>
+            </div>
+            <div class="approve-button" <%if(!user.isManager() || !rRequest.getIsPending()) out.print("style='display: none'");%>>
+                <a href="<%out.print(WebLink.URL_HOME+"approverequest?approved=false&id="+rRequest.getId());%>">Deny</a>
+            </div>
         </div>
     </div>
 

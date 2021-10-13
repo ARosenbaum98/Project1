@@ -1,7 +1,7 @@
 <%@ page import="com.reimbursement.weblinks.WebLink" %>
 <header id="site-banner">
     <div id="banner-logo">
-        <img src="<%out.print(WebLink.URL_SITE_IMGS);%>favcon.png" height = "50px" alt="logo">
+        <img src="<%out.print(WebLink.URL_SITE_IMGS);%>favcon.old.png" height = "50px" alt="logo">
         <div id="banner-company-name-slogan">
             <h1 id="banner-company-name">NoBody Enterprise</h1>
             <h2 id="banner-company-slogan">We don't exist, we won't exist</h2>

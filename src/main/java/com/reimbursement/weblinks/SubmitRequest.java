@@ -41,7 +41,9 @@ public class SubmitRequest extends HttpServlet {
         User user = WebLink.signinRedirect(request, response);
         ReimbursementRequest rRequest = new ReimbursementRequest(-1, true, null, amount, desc, expenseDate, LocalDateTime.now(), null, user);
 
-        connectRequest.insert(rRequest);
+        int newId = (Integer) connectRequest.insert(rRequest);
+
+        response.sendRedirect(WebLink.URL_VIEW_REQUEST_DETAIL+"?id="+newId);
 
         out.close();
     }
